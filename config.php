@@ -19,7 +19,7 @@ if ( !defined('ABSPATH') )
 	
 /** caminho no server para o sistema **/
 if ( !defined('BASEURL') )
-	define('BASEURL', '/crud-bootstrap-php-redline-motors/'); //raiz do projeto. trocar para "/" quando hospedado
+	define('BASEURL', '/'); //raiz do projeto. trocar para "/" quando hospedado
 	
 /** caminho do arquivo de banco de dados **/
 if ( !defined('DBAPI') )
