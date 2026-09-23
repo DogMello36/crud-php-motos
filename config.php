@@ -2,7 +2,7 @@
 
 /** O nome do banco de dados*/
 // define('DB_NAME', 'wda_crud');
-const DB_NAME = "if0_42990595_XXX";   
+const DB_NAME = "if0_42990595_wda_crud";   
 
 define('DB_USER', 'if0_42990595');
 
