@@ -6,7 +6,7 @@ const DB_NAME = "if0_42990595_wda_crud";
 
 define('DB_USER', 'if0_42990595');
 
-define('DB_PASSWORD', 'zTk10SEGuCMZF6');
+define('DB_PASSWORD', 'zTkl0SEGuCMZF6');
 
 define('DB_HOST', 'sql102.infinityfree.com');
 
