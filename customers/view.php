@@ -80,8 +80,8 @@ include(HEADER_TEMPLATE);
         <div class="detail-item">
             <span class="detail-label">Imagem:</span>
             <span class="detail-value">
-                <?php if (!empty($customer['imagem'])): ?>
-                    <img src="<?php echo BASEURL . 'uploads/' . $customer['imagem']; ?>" alt="Imagem do cliente"
+                <?php if (!empty($customer['Imagem'])): ?>
+                    <img src="<?php echo BASEURL . 'uploads/' . $customer['Imagem']; ?>" alt="Imagem do cliente"
                         class="detail-image">
                 <?php else: ?>
                     &mdash;

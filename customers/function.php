@@ -103,15 +103,14 @@ function add()
 {
 	if (!empty($_POST['customer'])) {
 
-		// $today = date_create('now', new DateTimeZone('-0300'));
 		$today = new DateTime('now', new DateTimeZone('America/Sao_Paulo'));
 
 		$customer = $_POST['customer'];
 		$customer['modified'] = $customer['created'] = $today->format("Y-m-d H:i:s");
-		//modified e created são posições que serão adiconadas dentro do array $customer
+		$customer['Imagem'] = uploadImagem();
 
-		save('customers', $customer); // 'customers' -> nome da tabela; $customer -> associative array
-		header('location: index.php'); // output buffer
+		save('customers', $customer);
+		header('location: index.php');
 	}
 }
 
@@ -126,10 +125,13 @@ function edit() {
 
     $id = $_GET['id'];
 
-    if (isset($_POST['customer'])) {
+        if (isset($_POST['customer'])) {
 
       $customer = $_POST['customer'];
       $customer['modified'] = $now->format("Y-m-d H:i:s");
+
+      $clienteAtual = find('customers', $id);
+      $customer['Imagem'] = uploadImagem($clienteAtual['Imagem'] ?? null);
 
       update("customers", $id, $customer);
       header("location: index.php");

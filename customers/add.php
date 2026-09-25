@@ -6,7 +6,7 @@ include HEADER_TEMPLATE;
 
 <h2>Novo Cliente</h2>
 
-<form action="add.php" method="post">
+<form action="add.php" method="post" enctype="multipart/form-data">
     <!-- area de campos do form -->
     <hr>
     <div class="row">
