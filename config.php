@@ -2,16 +2,13 @@
 
 /** O nome do banco de dados*/
 // define('DB_NAME', 'wda_crud');
-const DB_NAME = "wda_crud";
+const DB_NAME = "if0_42990595_wda_crud";   
 
-/** Usuário do banco de dados MySQL */
-define('DB_USER', 'root');
+define('DB_USER', 'if0_42990595');
 
-/** Senha do banco de dados MySQL */
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', 'zTkl0SEGuCMZF6');
 
-/** nome do host do MySQL */
-define('DB_HOST', 'localhost');
+define('DB_HOST', 'sql102.infinityfree.com');
 
 /** caminho absoluto para a pasta do sistema **/
 if ( !defined('ABSPATH') )
@@ -19,7 +16,7 @@ if ( !defined('ABSPATH') )
 	
 /** caminho no server para o sistema **/
 if ( !defined('BASEURL') )
-	define('BASEURL', '/crud-php-motos/'); //raiz do projeto. trocar para "/" quando hospedado
+	define('BASEURL', '/'); //raiz do projeto. trocar para "/" quando hospedado
 	
 /** caminho do arquivo de banco de dados **/
 if ( !defined('DBAPI') )
