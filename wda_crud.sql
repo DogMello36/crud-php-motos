@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS customers (
   phone varchar(20) NOT NULL,
   mobile varchar(20) NOT NULL,
   ie int(11) NOT NULL,
+  Imagem varchar(30),
   created datetime NOT NULL,
   modified datetime NOT NULL
 );
