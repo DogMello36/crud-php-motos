@@ -75,6 +75,20 @@ include HEADER_TEMPLATE;
         </div>
     </div>
 
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label for="imagem">Imagem</label>
+            <input type="file" class="form-control" id="imagem" name="customer[imagem]"
+                accept="image/png, image/jpeg, image/gif, image/webp">
+            <small class="rl-hint">JPG, PNG, GIF ou WEBP, até 2MB.</small>
+
+            <div id="imagem-preview-wrapper" class="rl-current-image" style="display: none;">
+                <img id="imagem-preview" src="" alt="Prévia da imagem selecionada">
+                <span>Prévia da imagem selecionada</span>
+            </div>
+        </div>
+    </div>
+
     <div id="actions" class="row">
         <div class="col-md-12">
             <button type="submit" class="btn btn-secondary mb-2">
@@ -86,5 +100,26 @@ include HEADER_TEMPLATE;
         </div>
     </div>
 </form>
+
+<script>
+    document.getElementById('imagem').addEventListener('change', function (event) {
+        var wrapper = document.getElementById('imagem-preview-wrapper');
+        var preview = document.getElementById('imagem-preview');
+        var arquivo = event.target.files[0];
+
+        if (!arquivo) {
+            wrapper.style.display = 'none';
+            preview.src = '';
+            return;
+        }
+
+        var leitor = new FileReader();
+        leitor.onload = function (e) {
+            preview.src = e.target.result;
+            wrapper.style.display = 'flex';
+        };
+        leitor.readAsDataURL(arquivo);
+    });
+</script>
 
 <?php include FOOTER_TEMPLATE; ?>

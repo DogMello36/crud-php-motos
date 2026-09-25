@@ -376,6 +376,40 @@ form {
     margin-bottom: 0.5rem;
 }
 
+/* ---------- Upload de imagem (add/edit) ---------- */
+
+.rl-hint {
+    display: block;
+    margin-top: 0.35rem;
+    color: var(--rl-ink-soft);
+    font-size: 0.78rem;
+}
+
+.rl-current-image {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.rl-current-image img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: var(--rl-radius);
+    border: 1px solid var(--rl-border);
+}
+
+.rl-current-image span {
+    font-size: 0.78rem;
+    color: var(--rl-ink-soft);
+}
+
+.form-control[type="file"] {
+    padding: 0.45rem 0.6rem;
+}
+
+
 /* ---------- Alerts ---------- */
 
 .alert {
