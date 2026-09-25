@@ -1,3 +1,5 @@
+
+
 :root {
     --rl-white: #ffffff;
     --rl-off-white: #f3f5f8;
@@ -350,30 +352,50 @@ form {
 
 /* ---------- View / details ---------- */
 
-.dl-horizontal {
+.detail-panel {
     background-color: var(--rl-off-white);
     border: 1px solid var(--rl-border);
     border-left: 4px solid var(--rl-blue);
     border-radius: var(--rl-radius);
-    padding: 1.1rem 1.4rem;
+    padding: 1.25rem 1.4rem;
     margin-bottom: 1rem;
+    overflow: hidden;
 }
 
-.dl-horizontal dt {
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.1rem 1.75rem;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+}
+
+.detail-label {
     font-family: var(--rl-font-display);
     text-transform: uppercase;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     letter-spacing: 0.05em;
     color: var(--rl-blue);
-    float: left;
-    width: 220px;
-    clear: left;
 }
 
-.dl-horizontal dd {
-    margin-left: 220px;
+.detail-value {
     color: var(--rl-ink);
-    margin-bottom: 0.5rem;
+    font-weight: 500;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+.detail-image {
+    max-width: 140px;
+    max-height: 140px;
+    border-radius: var(--rl-radius);
+    border: 1px solid var(--rl-border);
+    object-fit: cover;
 }
 
 /* ---------- Upload de imagem (add/edit) ---------- */
@@ -408,7 +430,6 @@ form {
 .form-control[type="file"] {
     padding: 0.45rem 0.6rem;
 }
-
 
 /* ---------- Alerts ---------- */
 
@@ -486,13 +507,8 @@ footer.container p {
         width: calc(100% - 1rem);
     }
 
-    .dl-horizontal dt {
-        float: none;
-        width: auto;
-    }
-
-    .dl-horizontal dd {
-        margin-left: 0;
+    .detail-grid {
+        grid-template-columns: 1fr;
     }
 
     footer.container {

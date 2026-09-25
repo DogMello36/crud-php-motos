@@ -13,50 +13,83 @@ include(HEADER_TEMPLATE);
     <div class="alert alert-<?php echo $_SESSION['type']; ?>"><?php echo $_SESSION['message']; ?></div>
 <?php endif; ?>
 
-<dl class="dl-horizontal">
-    <dt>Nome / Razão Social:</dt> <!-- titulo -->
-    <dd><?php echo $customer['name']; ?></dd>
+<div class="detail-panel">
+    <div class="detail-grid">
+        <div class="detail-item">
+            <span class="detail-label">Nome / Razão Social:</span>
+            <span class="detail-value"><?php echo $customer['name']; ?></span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">CPF / CNPJ:</span>
+            <span class="detail-value"><?php echo $customer['cpf_cnpj']; ?></span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Data de Nascimento:</span>
+            <span class="detail-value"><?php echo formatData($customer['birthdate'], "d/m/Y"); ?></span>
+        </div>
+    </div>
+</div>
 
-    <dt>CPF / CNPJ:</dt>
-    <dd><?php echo $customer['cpf_cnpj']; ?></dd>
+<div class="detail-panel">
+    <div class="detail-grid">
+        <div class="detail-item">
+            <span class="detail-label">Endereço:</span>
+            <span class="detail-value"><?php echo $customer['address']; ?></span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Bairro:</span>
+            <span class="detail-value"><?php echo $customer['hood']; ?></span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">CEP:</span>
+            <span class="detail-value"><?php echo cep($customer['zip_code']); ?></span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Data de Cadastro:</span>
+            <span class="detail-value"><?php echo formatData($customer['created'], "d/m/Y : H:i:s"); ?></span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Data da última atualização:</span>
+            <span class="detail-value"><?php echo formatData($customer['modified'], "d/m/Y - H:i:s"); ?></span>
+        </div>
+    </div>
+</div>
 
-    <dt>Data de Nascimento:</dt>
-    <dd><?php echo formatData($customer['birthdate'], "d/m/Y"); ?></dd>
-</dl>
-
-<dl class="dl-horizontal">
-    <dt>Endereço:</dt>
-    <dd><?php echo $customer['address']; ?></dd>
-
-    <dt>Bairro:</dt>
-    <dd><?php echo $customer['hood']; ?></dd>
-
-    <dt>CEP:</dt>
-    <dd><?php echo cep($customer['zip_code']); ?></dd>
-
-    <dt>Data de Cadastro:</dt>
-    <dd><?php echo formatData($customer['created'], "d/m/Y : H:i:s"); ?></dd>
-
-    <dt>Data da última atualização:</dt>
-    <dd><?php echo formatData($customer['modified'], "d/m/Y - H:i:s"); ?></dd>
-</dl>
-
-<dl class="dl-horizontal">
-    <dt>Cidade:</dt>
-    <dd><?php echo $customer['city']; ?></dd>
-
-    <dt>Telefone:</dt>
-    <dd><?php echo telefone($customer['phone']); ?></dd>
-
-    <dt>Celular:</dt>
-    <dd><?php echo telefone($customer['mobile']); ?></dd>
-
-    <dt>UF:</dt>
-    <dd><?php echo $customer['state']; ?></dd>
-
-    <dt>Inscrição Estadual:</dt>
-    <dd><?php echo number_format($customer['ie'], 0, ",", "."); ?></dd>
-</dl>
+<div class="detail-panel">
+    <div class="detail-grid">
+        <div class="detail-item">
+            <span class="detail-label">Cidade:</span>
+            <span class="detail-value"><?php echo $customer['city']; ?></span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Telefone:</span>
+            <span class="detail-value"><?php echo telefone($customer['phone']); ?></span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Celular:</span>
+            <span class="detail-value"><?php echo telefone($customer['mobile']); ?></span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">UF:</span>
+            <span class="detail-value"><?php echo $customer['state']; ?></span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Inscrição Estadual:</span>
+            <span class="detail-value"><?php echo number_format($customer['ie'], 0, ",", "."); ?></span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Imagem:</span>
+            <span class="detail-value">
+                <?php if (!empty($customer['imagem'])): ?>
+                    <img src="<?php echo BASEURL . 'uploads/' . $customer['imagem']; ?>" alt="Imagem do cliente"
+                        class="detail-image">
+                <?php else: ?>
+                    &mdash;
+                <?php endif; ?>
+            </span>
+        </div>
+    </div>
+</div>
 
 <div id="actions" class="row">
     <div class="col-md-12">

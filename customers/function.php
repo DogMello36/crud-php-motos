@@ -42,6 +42,50 @@ function index()
 	$customers = find_all("customers");
 	//find_all e find é a mesma coisa, resulta na mesma coisa
 }
+function uploadImagem($imagemAtual = null)
+{
+	if (empty($_FILES['customer']['name']['imagem']) || $_FILES['customer']['error']['imagem'] === UPLOAD_ERR_NO_FILE) {
+		return $imagemAtual;
+	}
+
+	if ($_FILES['customer']['error']['imagem'] !== UPLOAD_ERR_OK) {
+		$_SESSION['message'] = "Não foi possível enviar a imagem.";
+		$_SESSION['type'] = "danger";
+		return $imagemAtual;
+	}
+
+	$extensoesPermitidas = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+	$nomeOriginal = $_FILES['customer']['name']['imagem'];
+	$extensao = strtolower(pathinfo($nomeOriginal, PATHINFO_EXTENSION));
+
+	if (!in_array($extensao, $extensoesPermitidas)) {
+		$_SESSION['message'] = "Formato de imagem não permitido. Use JPG, PNG, GIF ou WEBP.";
+		$_SESSION['type'] = "danger";
+		return $imagemAtual;
+	}
+
+	if ($_FILES['customer']['size']['imagem'] > 2 * 1024 * 1024) { // 2MB
+		$_SESSION['message'] = "A imagem deve ter no máximo 2MB.";
+		$_SESSION['type'] = "danger";
+		return $imagemAtual;
+	}
+
+	$pastaUploads = __DIR__ . '/../uploads/';
+	if (!is_dir($pastaUploads)) {
+		mkdir($pastaUploads, 0755, true);
+	}
+
+	// nome curto o suficiente para caber na coluna varchar(30)
+	$nomeArquivo = substr(md5(uniqid('', true)), 0, 20) . '.' . $extensao;
+
+	if (!move_uploaded_file($_FILES['customer']['tmp_name']['imagem'], $pastaUploads . $nomeArquivo)) {
+		$_SESSION['message'] = "Não foi possível salvar a imagem no servidor.";
+		$_SESSION['type'] = "danger";
+		return $imagemAtual;
+	}
+
+	return $nomeArquivo;
+}
 
 /**
  *  Visualização de um Cliente
